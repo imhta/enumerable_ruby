@@ -39,10 +39,12 @@ module Enumerable
     true
   end
 
-  def my_count
+
+  def my_count(arg = nil)
     res = 0
-    my_each { |v| res += 1 if yield v } if block_given?
-    my_each { |v| res += 1 } if !block_given?
+    my_each { |v| res += 1 if yield v } if block_given? && arg.nil?
+    my_each { |v| res += 1 if arg == v } if !block_given? && !arg.nil?
+    my_each { |v| res += 1 } if !block_given? && arg.nil?
     res
   end
 
@@ -65,6 +67,7 @@ def multiply_els(arr)
   p arr.my_inject(1) { |product, v| product * v }
 end
 
+=begin
 # input
 arr = [1, 2, 3, 4, 5, 6]
 
@@ -101,6 +104,10 @@ p arr.count
 p arr.my_count 
 
 # with arg
+p arr.count(1)
+p arr.my_count(1) 
+
+# with block
 p arr.count { |v| v >= 2 }
 p arr.my_count { |v| v >= 2 }
 
@@ -118,3 +125,4 @@ p new_arr, my_new_arr, my_new_arr_with_proc
 p arr.inject { |sum, v| sum + v }
 p arr.my_inject { |sum, v| sum + v }
 multiply_els([2, 4, 5])
+=end
