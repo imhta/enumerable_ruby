@@ -35,4 +35,4 @@ Repl.it => [Preview](https://repl.it/@ponmuthuselvam/enumerableruby)
 
 ## Author
 
-* [@imhtapm](https://github.com/imhtapm)
+* [@imhta](https://github.com/imhta)
